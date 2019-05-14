@@ -5,6 +5,14 @@ class Player:
     """Asks user for move."""
     print(game.state)
     move = input('What\'s your move? ')
+
+    if move in ['exit', 'stop', 'quit']:
+      print('Quitting...')
+      exit()
+
+    while not (len(move.split()) == 2 and all([m.isdigit() for m in move.split()])):
+      print('Invalid input. Please try again.')
+      move = input('What\'s your move? ')
     return [int(x) - 1 for x in move.split()]
 
   def draw(self, turn):
